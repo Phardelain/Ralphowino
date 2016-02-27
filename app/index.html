@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/main.css" />
+<link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
+<script type="text/javascript" src="scripts/angular.js"></script>
+<script type="text/javascript" src="scripts/main.js"></script>
+<script type="text/javascript" src="scripts/bootstrap.js"></script>
+<!-- <script type="text/javascript" src="scripts/bootstrap-typeahead.js"></script> -->
+
+<title>Ralphowino Front-End Challenge</title>
+</head>
+
+<body ng-app="ralphowino" ng-controller="repoCtrl" ng-init="initialize()" style="margin:auto;">
+	<h1>Welcome to the Ralphowino Front-End Developper Test.</h1>
+	
+	
+	<div class="login" ng-show="showLogin">
+	    <p>Mail</p>
+	    <span><input type="mail" ng-model="userMail"></span><br>
+	    <p>Password:</p>
+	    <span><input type="password" ng-model="userPass"></span>
+	    <button ng-click="login()">Sign in</button>
+	
+	</div>
+	
+<div ng-show="userPopup" style="margin: auto; min-width: 300px;">
+	<div><span>Search: </span><span><input ng-model="searchText"></span></div>
+
+<div style="display: flex;">
+	<div class="listRepo" id="searchTextResults">
+		<div ng-repeat="repo in repoList | filter:searchText"
+			class="repoDetails" >
+			
+			<div class="nameDetails" ng-click="displayIssue($index)">
+				<span>{{repo.repotName}} Nombre de Issues :<span style="color: red;">{{valeur}}</span> </span> 
+			</div>
+		</div>
+
+	</div>
+	
+	<div  style="width: 420px;">
+		<!-- <div class="bioHeader">
+			<div style="float: left;">User Details</div>
+			<div style="float: right;cursor: pointer;" ng-click="closePopup()">
+				<img ng-src="images/btn-close.png">
+			</div>
+		</div> -->
+		<div class="bioContent" ng-show="issuesDisplayDetails">
+		
+
+			<div class="bioNonImage">
+			  <div class="dto"> Issues Details:</div>
+				<div class="eachDto" ng-repeat="issue in array1">
+					<div class="dtoValue">{{issue.issuesContent}}</div>
+				</div>
+				
+			</div>
+
+		</div>
+
+
+	</div>
+</div>
+</div>
+	
+
+</body>
+</html>
